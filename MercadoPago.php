@@ -7,7 +7,8 @@ include __DIR__.DS."vendor/autoload.php";
         public $name,$commission=true;
         public $config=[],$lang=[],$page_type = "in-page",$callback_type="server-sided";
         public $payform=false;
-        private $publicKey, $accessToken;
+        public $publicKey;
+        private $accessToken;
         /**
          * @var mixed
          */
