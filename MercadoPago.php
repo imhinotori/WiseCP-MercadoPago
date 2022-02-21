@@ -63,8 +63,7 @@ include __DIR__.DS."vendor/autoload.php";
             $email                  = $user_data["email"];
             $user_name              = $user_data["full_name"];
             if($user_data["company_name"]) $user_name .= " ".$user_data["company_name"];
-            $payable_total          = number_format($checkout_data["total"], 2, '.', '');
-            $payable_total          = $payable_total;
+            $payable_total          = $checkout_data["total"];
             $currency               = $this->cid_convert_code($checkout_data["currency"]);
             $phone                  = NULL;
             $address_line           = NULL;
@@ -98,6 +97,7 @@ include __DIR__.DS."vendor/autoload.php";
             ];
 
             return [
+                'data' => $data,
                 'payable_total' => $payable_total,
                 'currency'      => $currency,
             ];
