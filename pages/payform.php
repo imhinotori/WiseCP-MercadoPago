@@ -12,6 +12,8 @@ $item->unit_price = 75;
 $preference->items = array($item);
 $preference->save();*/
 
+print_r($config);
+print_r($lang);
 print_r($checkout_info);
 ?>
 
