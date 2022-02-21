@@ -2,9 +2,8 @@
     if(!defined("CORE_FOLDER")) die();
     $LANG           = $module->lang;
     $CONFIG         = $module->config;
-    $callback_url   = Controllers::$init->CRLink("payment",['MercadoPago',$module->get_auth_token(),'callback']);
-    $success_url    = Controllers::$init->CRLink("pay-successful");
-    $failed_url     = Controllers::$init->CRLink("pay-failed");
+    $webhook        = Controllers::$init->CRLink("payment",['MercadoPago',$module->get_auth_token(),'callback']);
+
 ?>
 <form action="<?php echo Controllers::$init->getData("links")["controller"]; ?>" method="post" id="MercadoPago">
     <input type="hidden" name="operation" value="module_controller">

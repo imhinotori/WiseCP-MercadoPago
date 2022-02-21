@@ -4,6 +4,7 @@ $config         = $module->config;
 $lang           = $module->lang;
 $checkout_info  = $module->checkout_info();
 
+
 /*$item = new MercadoPago\Item();
 $item->title = 'Mi producto';
 $item->quantity = 1;
