@@ -12,21 +12,25 @@ $test_public_key = Filter::init("POST/test_public_key", "hclear");
 $test_access_token = Filter::init("POST/test_access_token", "hclear");
 $commission_rate = Filter::init("POST/commission_rate", "amount");
 $commission_rate = str_replace(",", ".", $commission_rate);
+$test_mode = (bool)(int)Filter::init("POST/test_mode", "numbers");
 
 
 $sets = [];
 
-if($live_public_key != $config["settings"]["live_public_key"])
+if ($live_public_key != $config["settings"]["live_public_key"])
     $sets["settings"]["live_public_key"] = $live_public_key;
 
-if($live_access_token != $config["settings"]["live_access_token"])
+if ($live_access_token != $config["settings"]["live_access_token"])
     $sets["settings"]["live_access_token"] = $live_access_token;
 
-if($test_public_key != $config["settings"]["test_public_key"])
+if ($test_public_key != $config["settings"]["test_public_key"])
     $sets["settings"]["test_public_key"] = $test_public_key;
 
-if($test_access_token != $config["settings"]["test_access_token"])
+if ($test_access_token != $config["settings"]["test_access_token"])
     $sets["settings"]["test_access_token"] = $test_access_token;
+
+if ($test_mode != $config["settings"]["test_mode"])
+    $sets["settings"]["test_mode"] = $test_mode;
 
 if ($commission_rate != $config["settings"]["commission_rate"])
     $sets["settings"]["commission_rate"] = $commission_rate;
