@@ -89,7 +89,6 @@ include __DIR__.DS."vendor/autoload.php";
                 "description"          => $description,
                 "amount"               => $payable_total,
                 "currency"             => $currency,
-                "payment_method_types" => ["card"],
                 "receipt_email"        => $email,
                 "metadata"             => [
                     "order_id"         => $this->checkout["id"],
@@ -97,9 +96,7 @@ include __DIR__.DS."vendor/autoload.php";
             ];
 
             return [
-                'data' => $data,
-                'payable_total' => $payable_total,
-                'currency'      => $currency,
+                'data' => $data
             ];
         }
 
