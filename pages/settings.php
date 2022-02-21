@@ -37,7 +37,7 @@
     <div class="formcon live_content" style="<?php echo $CONFIG["settings"]["test_mode"] ? 'display:none;' : ''; ?>">
         <div class="yuzde30">Live Public Key</div>
         <div class="yuzde70">
-            <input type="text" name="live_publishable_key" value="<?php echo $CONFIG["settings"]["live_public_key"]; ?>">
+            <input type="text" name="live_public_key" value="<?php echo $CONFIG["settings"]["live_public_key"]; ?>">
             <span class="kinfo"><?php echo $LANG["api-keys-desc"]; ?></span>
         </div>
     </div>
@@ -45,7 +45,7 @@
     <div class="formcon test_content" style="<?php echo $CONFIG["settings"]["test_mode"] ? '' : 'display:none;'; ?>">
         <div class="yuzde30">Test Public Key</div>
         <div class="yuzde70">
-            <input type="text" name="test_publishable_key" value="<?php echo $CONFIG["settings"]["test_public_key"]; ?>">
+            <input type="text" name="test_public_key" value="<?php echo $CONFIG["settings"]["test_public_key"]; ?>">
             <span class="kinfo"><?php echo $LANG["api-keys-desc"]; ?></span>
         </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="formcon live_content" style="<?php echo $CONFIG["settings"]["test_mode"] ? 'display:none;' : ''; ?>">
         <div class="yuzde30">Live Access Token</div>
         <div class="yuzde70">
-            <input type="text" name="live_secret_key" value="<?php echo $CONFIG["settings"]["live_access_token"]; ?>">
+            <input type="text" name="live_access_token" value="<?php echo $CONFIG["settings"]["live_access_token"]; ?>">
             <span class="kinfo"><?php echo $LANG["api-keys-desc"]; ?></span>
         </div>
     </div>
@@ -61,7 +61,7 @@
     <div class="formcon test_content" style="<?php echo $CONFIG["settings"]["test_mode"] ? '' : 'display:none;'; ?>">
         <div class="yuzde30">Test Access Token</div>
         <div class="yuzde70">
-            <input type="text" name="test_secret_key" value="<?php echo $CONFIG["settings"]["test_access_token"]; ?>">
+            <input type="text" name="test_access_token" value="<?php echo $CONFIG["settings"]["test_access_token"]; ?>">
             <span class="kinfo"><?php echo $LANG["api-keys-desc"]; ?></span>
         </div>
     </div>
