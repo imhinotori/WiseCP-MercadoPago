@@ -5,39 +5,36 @@ $lang           = $module->lang;
 $checkout_info  = $module->checkout_info();
 
 $preference = new MercadoPago\Preference();
+$payer = new MercadoPago\Payer();
 
-$items = [];
+/* Payer Data */
+$payer->email = $checkout_info['data']['receipt_email'];
 
-foreach($checkout['items'] as $item) {
-    $item = new MercadoPago\Item();
-    $item->title = $item['options']['category']+"-"+$item['name'];
-    $item->quantity = 1;
-    $item->unit_price = $checkout_info['data']['amount'];
-    array_push($items, $item);
+/* Items */
+$items = array();
+foreach($module->checkout['items'] as $item)
+{
+    $mercadoPagoItem = new MercadoPago\Item();
+    $mercadoPagoItem->title = $item['options']['category']." - ".$item['name'];
+    $mercadoPagoItem->quantity = $item['quantity'];
+    $mercadoPagoItem->unit_price = $item['amount'];
+    array_push($items, $mercadoPagoItem);
 }
 
 $preference->items = $items;
+$preference->payer = $payer;
+$preference->back_urls = array(
+    "success" => $links['callback'],
+    "pending" => $links['callback'],
+    "failure" => $links['failed-page']
+);
+$preference->auto_return = "approved";
+$preference->external_reference = $checkout_info['data']['metadata']['order_id'];
 $preference->save();
 
 ?>
 
-<script src="https://sdk.mercadopago.com/js/v2"></script>
-
-<a href="<?php echo $preference->init_point; ?>">Pagar con Mercado Pago</a>
 
 <script>
-    const mp = new MercadoPago(<?php echo($module->publicKey); ?>, {
-        locale: "es-CL",
-    });
-
-    mp.checkout({
-        preference: {
-            id: "YOUR_PREFERENCE_ID",
-        },
-        autoOpen: true,
-        render: {
-            container: ".cho-container",
-            label: "Pagar",
-        },
-    });
+    window.location.href = "<?php echo($preference->init_point); ?>";
 </script>
