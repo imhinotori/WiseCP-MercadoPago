@@ -17,7 +17,7 @@ foreach($module->checkout['items'] as $item)
     $mercadoPagoItem = new MercadoPago\Item();
     $mercadoPagoItem->title = $item['options']['category']." - ".$item['name'];
     $mercadoPagoItem->quantity = $item['quantity'];
-    $mercadoPagoItem->unit_price = $item['amount'];
+    $mercadoPagoItem->unit_price = $item['amount_including_discount'];
     array_push($items, $mercadoPagoItem);
 }
 
@@ -33,7 +33,6 @@ $preference->external_reference = $checkout_info['data']['metadata']['order_id']
 $preference->save();
 
 ?>
-
 
 <script>
     window.location.href = "<?php echo($preference->init_point); ?>";
