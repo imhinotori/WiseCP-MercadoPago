@@ -6,21 +6,21 @@ $checkout_info  = $module->checkout_info();
 
 $preference = new MercadoPago\Preference();
 $payer = new MercadoPago\Payer();
-
 /* Payer Data */
 $payer->email = $checkout_info['data']['receipt_email'];
 
 /* Items */
 $items = array();
+
 foreach($module->checkout['items'] as $item)
 {
     $mercadoPagoItem = new MercadoPago\Item();
     $mercadoPagoItem->title = $item['options']['category']." - ".$item['name'];
     $mercadoPagoItem->quantity = $item['quantity'];
-    $mercadoPagoItem->unit_price = $item['amount_including_discount'];
+    $mercadoPagoItem->unit_price = !empty($item['amount_including_discount']) ? $item['amount_including_discount'] : $item['amount'];
+
     array_push($items, $mercadoPagoItem);
 }
-
 $preference->items = $items;
 $preference->payer = $payer;
 $preference->back_urls = array(
